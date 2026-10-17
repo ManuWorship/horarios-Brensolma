@@ -4,12 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel de horarios · Brensolma</title>
-<link rel="icon" href="icono.svg" type="image/svg+xml">
+<meta name="theme-color" content="#ffffff">
+<script src="tema.js"></script>
+<link rel="icon" href="icono-192.png" type="image/png">
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 <header>
-  <div><strong>Panel de horarios</strong><span>Brensolma · administración</span></div>
+  <div class="marca"><img src="casa.png" alt=""><div><strong>Panel de horarios</strong><span>Brensolma · administración</span></div></div>
   <nav><button id="btn-salir" class="chico" type="button" hidden>Salir</button></nav>
 </header>
 <div id="aviso" class="aviso" hidden></div>
@@ -24,6 +26,8 @@
   </div>
 
   <section id="tab-login">
+    <img class="logo-grande solo-claro" style="margin-left:0" src="logo-claro.png" alt="Brensolma">
+    <img class="logo-grande solo-oscuro" style="margin-left:0" src="logo-oscuro.png" alt="Brensolma">
     <h1>Ingresar</h1>
     <form id="form-login" style="max-width:380px">
       <label>Mail<input id="email" type="email" required></label>
@@ -97,6 +101,12 @@
   </section>
 
   <section id="tab-config" hidden>
+    <h2>Apariencia (en esta compu)</h2>
+    <div class="selector-tema" style="max-width:420px" role="group" aria-label="Tema">
+      <button type="button" data-tema="auto">Automático</button>
+      <button type="button" data-tema="claro">☀️ Claro</button>
+      <button type="button" data-tema="oscuro">🌙 Oscuro</button>
+    </div>
     <form id="form-config" style="max-width:520px">
       <h2>Brensolma</h2>
       <div class="fila"><label>Latitud<input id="c-lat" inputmode="decimal"></label><label>Longitud<input id="c-lng" inputmode="decimal"></label></div>

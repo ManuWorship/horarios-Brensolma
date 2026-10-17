@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Horarios Brensolma</title>
-<meta name="theme-color" content="#0b2d5b">
+<meta name="theme-color" content="#ffffff">
+<script src="tema.js"></script>
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icono.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icono-192.png">
+<link rel="icon" href="icono-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icono-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Horarios BSM">
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 <header>
-  <div><strong>Horarios Brensolma</strong><span id="hola"></span></div>
+  <div class="marca"><img src="casa.png" alt=""><div><strong>Horarios Brensolma</strong><span id="hola"></span></div></div>
   <nav>
     <button id="btn-perfil" class="chico" type="button">Mi perfil</button>
     <button id="btn-salir" class="chico" type="button" hidden>Salir</button>
@@ -25,6 +26,8 @@
 
 <main>
   <section id="pantalla-login">
+    <img class="logo-grande solo-claro" src="logo-claro.png" alt="Brensolma">
+    <img class="logo-grande solo-oscuro" src="logo-oscuro.png" alt="Brensolma">
     <h1>Ingresar</h1>
     <form id="form-login">
       <label id="campo-nombre" hidden>Nombre y apellido<input id="nombre" autocomplete="name"></label>
@@ -55,6 +58,12 @@
   <section id="pantalla-perfil" hidden>
     <h1>Mi perfil</h1>
     <p id="estado-casa" class="nota"></p>
+    <h2>Apariencia</h2>
+    <div class="selector-tema" role="group" aria-label="Tema">
+      <button type="button" data-tema="auto">Automático</button>
+      <button type="button" data-tema="claro">☀️ Claro</button>
+      <button type="button" data-tema="oscuro">🌙 Oscuro</button>
+    </div>
     <p class="nota">La ubicación solo se toma en el momento de cada marca. La app no te sigue durante el día.</p>
     <button id="btn-volver" class="marcar secundario" type="button">Volver</button>
   </section>
