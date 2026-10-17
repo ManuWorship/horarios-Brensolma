@@ -81,7 +81,7 @@
   </section>
 
   <section id="tab-empleados" hidden>
-    <p class="nota">Los empleados se registran solos desde la app. Acá los activás y aprobás la ubicación de su casa (abrí el mapa para revisarla antes).</p>
+    <p class="nota">Los empleados se registran solos desde la app. Acá los activás y les cargás la dirección de su casa (solo administración puede cargarla o cambiarla).</p>
     <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Estado</th><th>Casa</th><th>Rol</th></tr></thead>
       <tbody id="tabla-empleados"></tbody></table></div>
   </section>
@@ -113,6 +113,20 @@
     </form>
   </section>
 </main>
+<dialog id="dlg-casa">
+  <h2 id="casa-titulo">Casa</h2>
+  <p class="nota">Escribí la dirección (calle, número y localidad) o pegá las coordenadas de Google Maps (mantené apretado sobre la casa y copiá los números).</p>
+  <div class="fila">
+    <label>Dirección o coordenadas<input id="casa-dir" placeholder="Ej. Pasco 1234, Remedios de Escalada"></label>
+    <button id="casa-buscar" type="button" class="btn">Buscar</button>
+  </div>
+  <div id="casa-resultados"></div>
+  <p class="nota">Abrí "ver en el mapa" y revisá que el punto caiga en la casa. Si queda corrido, pegá las coordenadas exactas.</p>
+  <div class="fila">
+    <button id="casa-guardar" type="button" class="btn prim" disabled>Guardar casa</button>
+    <button id="casa-cancelar" type="button" class="btn">Cancelar</button>
+  </div>
+</dialog>
 <script src="config.js"></script>
 <script type="module" src="admin.js"></script>
 </body>

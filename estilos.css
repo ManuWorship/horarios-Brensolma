@@ -47,3 +47,4 @@ dialog::backdrop{background:#0008}
 .tabs button[aria-pressed=true]{background:var(--azul2);color:#fff;border-color:var(--azul2)}
 .alerta{color:var(--rojo);font-size:12px}
 main.ancho{max-width:1200px}
+.resultado{padding:8px 0;border-bottom:1px solid var(--borde);font-size:14px}
