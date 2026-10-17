@@ -1,0 +1,64 @@
+rules_version = '2';
+// Reglas de seguridad de la app de horarios de Brensolma.
+// Se pegan en Firebase > Firestore Database > Reglas.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function logueado() { return request.auth != null; }
+    function rutaPerfil() { return /databases/$(database)/documents/empleados/$(request.auth.uid); }
+    function perfil() { return get(rutaPerfil()).data; }
+    function esAdmin() { return logueado() && exists(rutaPerfil()) && perfil().get('rol', '') == 'admin'; }
+    function activo() { return logueado() && exists(rutaPerfil()) && perfil().get('estado', '') == 'activo'; }
+
+    // La marca de casa tiene que estar dentro de la zona aprobada de la casa
+    // (caja de ±radio alrededor del punto) y con buena precisión de GPS.
+    function enCasa(d) {
+      let c = perfil().get('casa', null);
+      return c != null
+        && d.acc is number && d.acc <= 100
+        && math.abs(d.lat - c.lat) <= c.dLat
+        && math.abs(d.lng - c.lng) <= c.dLng;
+    }
+
+    match /config/{id} {
+      allow read: if logueado();
+      allow write: if esAdmin();
+    }
+
+    match /proyectos/{id} {
+      allow read: if logueado();
+      allow write: if esAdmin();
+    }
+
+    match /empleados/{uid} {
+      allow read: if logueado() && (request.auth.uid == uid || esAdmin());
+      // Cada uno crea su perfil, siempre pendiente y sin casa aprobada.
+      allow create: if logueado() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['nombre', 'email', 'estado', 'rol', 'creado'])
+        && request.resource.data.estado == 'pendiente'
+        && request.resource.data.rol == 'empleado';
+      // El empleado solo puede proponer la ubicación de su casa; el resto lo cambia administración.
+      allow update: if esAdmin()
+        || (logueado() && request.auth.uid == uid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['casaPropuesta']));
+      allow delete: if esAdmin();
+    }
+
+    match /marcas/{id} {
+      allow read: if esAdmin() || (logueado() && resource.data.uid == request.auth.uid);
+      // Administración puede cargar marcas olvidadas (quedan como manuales).
+      allow create: if esAdmin()
+        || (activo()
+            && request.resource.data.uid == request.auth.uid
+            && request.resource.data.ts == request.time          // la hora la pone el servidor
+            && request.resource.data.tipo in ['salida_casa', 'llegada_trabajo', 'inicio', 'cambio', 'fin',
+                                               'salida_trabajo', 'llegada_casa']
+            && request.resource.data.lat is number && request.resource.data.lng is number
+            && !('manual' in request.resource.data)
+            && (!(request.resource.data.tipo in ['salida_casa', 'llegada_casa'])
+                || enCasa(request.resource.data)));
+      allow update: if false;          // nadie modifica una marca: se borra y se carga de nuevo
+      allow delete: if esAdmin();
+    }
+  }
+}

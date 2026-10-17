@@ -1,0 +1,14 @@
+{
+  "name": "Horarios Brensolma",
+  "short_name": "Horarios BSM",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b2d5b",
+  "theme_color": "#0b2d5b",
+  "lang": "es-AR",
+  "icons": [
+    {"src": "icono-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icono-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icono.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}

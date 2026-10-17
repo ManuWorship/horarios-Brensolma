@@ -1,0 +1,49 @@
+:root{--azul:#0b2d5b;--azul2:#1d5fb4;--verde:#1f8a4c;--rojo:#c0392b;--fondo:#f3f5f9;--carta:#fff;--texto:#1b2430;--suave:#5f6b7a;--borde:#dde3ec}
+@media (prefers-color-scheme:dark){:root{--fondo:#0f1520;--carta:#18212e;--texto:#e8edf4;--suave:#9aa7b8;--borde:#2a3647;--azul2:#5b9bf0}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--fondo);color:var(--texto);padding-bottom:env(safe-area-inset-bottom)}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:var(--azul);color:#fff;position:sticky;top:0;z-index:2}
+header span{display:block;font-size:13px;opacity:.8}
+nav{display:flex;gap:6px}
+main{max-width:560px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:8px 0 14px}h2{font-size:16px;margin:22px 0 8px;color:var(--suave)}
+label{display:block;margin:0 0 12px;font-size:14px;color:var(--suave)}
+input,select{display:block;width:100%;margin-top:4px;padding:12px;font-size:16px;border:1px solid var(--borde);border-radius:10px;background:var(--carta);color:var(--texto)}
+button{font:inherit;cursor:pointer}
+.marcar{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:64px;margin:0 0 10px;padding:14px;border-radius:14px;border:0;font-size:18px;font-weight:600}
+.marcar.principal{background:var(--verde);color:#fff;min-height:84px;font-size:20px}
+.marcar.secundario{background:var(--carta);color:var(--texto);border:1px solid var(--borde)}
+.marcar:disabled{opacity:.6}
+.emoji{font-size:26px}
+.chico{font-size:13px;padding:6px 10px;border-radius:8px;border:1px solid #ffffff55;background:transparent;color:inherit}
+.link{background:none;border:0;color:var(--azul2);padding:6px 0;text-decoration:underline}
+.fecha{margin:0;color:var(--suave);text-transform:capitalize}
+.estado{font-size:18px;font-weight:600;margin:4px 0 16px}
+.resumen{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.resumen div{background:var(--carta);border:1px solid var(--borde);border-radius:12px;padding:10px;text-align:center}
+.resumen b{display:block;font-size:20px}.resumen small{color:var(--suave)}
+.lista{list-style:none;padding:0;margin:0}
+.lista li{background:var(--carta);border:1px solid var(--borde);border-radius:10px;padding:10px 12px;margin-bottom:6px}
+.lista .hora{font-variant-numeric:tabular-nums;font-weight:700;margin-right:10px}
+.lista small{color:var(--suave)}
+.nota{color:var(--suave);font-size:14px}
+.aviso{position:sticky;top:64px;z-index:3;margin:10px 16px 0;padding:12px 14px;border-radius:10px;background:var(--azul2);color:#fff;font-weight:600}
+.aviso.ok{background:var(--verde)}.aviso.error{background:var(--rojo)}
+dialog{border:0;border-radius:16px;padding:18px;width:min(92vw,460px);background:var(--carta);color:var(--texto)}
+dialog::backdrop{background:#0008}
+.opciones{display:grid;gap:8px;margin-bottom:10px;max-height:50vh;overflow:auto}
+.opcion{padding:14px;border-radius:10px;border:1px solid var(--borde);background:var(--fondo);color:var(--texto);text-align:left;font-size:16px}
+/* panel */
+.tabla{width:100%;border-collapse:collapse;font-size:14px;background:var(--carta)}
+.tabla th,.tabla td{border-bottom:1px solid var(--borde);padding:8px 6px;text-align:left;vertical-align:top}
+.tabla th{position:sticky;top:0;background:var(--carta);font-size:12px;color:var(--suave)}
+.scroll{overflow:auto;max-width:100%;border:1px solid var(--borde);border-radius:10px}
+.fila{display:flex;flex-wrap:wrap;gap:8px;align-items:end;margin-bottom:12px}
+.fila label{margin:0;flex:1 1 140px}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--borde);background:var(--carta);color:var(--texto)}
+.btn.prim{background:var(--azul2);color:#fff;border:0}
+.btn.peq{padding:6px 10px;font-size:13px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button[aria-pressed=true]{background:var(--azul2);color:#fff;border-color:var(--azul2)}
+.alerta{color:var(--rojo);font-size:12px}
+main.ancho{max-width:1200px}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel de horarios · Brensolma</title>
+<link rel="icon" href="icono.svg" type="image/svg+xml">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header>
+  <div><strong>Panel de horarios</strong><span>Brensolma · administración</span></div>
+  <nav><button id="btn-salir" class="chico" type="button" hidden>Salir</button></nav>
+</header>
+<div id="aviso" class="aviso" hidden></div>
+
+<main class="ancho">
+  <div class="tabs" hidden>
+    <button class="btn" data-tab="reporte">📊 Reporte</button>
+    <button class="btn" data-tab="marcas">✏️ Correcciones</button>
+    <button class="btn" data-tab="empleados">👷 Empleados<span id="badge-emp"></span></button>
+    <button class="btn" data-tab="proyectos">📁 Proyectos</button>
+    <button class="btn" data-tab="config">⚙️ Configuración</button>
+  </div>
+
+  <section id="tab-login">
+    <h1>Ingresar</h1>
+    <form id="form-login" style="max-width:380px">
+      <label>Mail<input id="email" type="email" required></label>
+      <label>Contraseña<input id="pass" type="password" required></label>
+      <button class="btn prim" type="submit">Entrar</button>
+    </form>
+    <p class="nota">Solo cuentas con rol de Administración.</p>
+  </section>
+
+  <section id="tab-reporte" hidden>
+    <form id="form-reporte" class="fila">
+      <label>Desde<input id="desde" type="date" required></label>
+      <label>Hasta<input id="hasta" type="date" required></label>
+      <label>Empleado<select id="r-empleado" class="sel-empleado" data-todos></select></label>
+      <button class="btn prim" type="submit">Ver</button>
+      <button class="btn" type="button" id="btn-excel">⬇️ Excel</button>
+    </form>
+    <div id="resultado" hidden>
+      <p id="sin-datos" class="nota" hidden>No hay marcas en ese período.</p>
+      <h2>Jornadas</h2>
+      <div class="scroll"><table class="tabla">
+        <thead><tr><th>Fecha</th><th>Empleado</th><th>Salió casa</th><th>Llegó trabajo</th><th>Salió trabajo</th><th>Llegó casa</th><th>Viaje</th><th>Hs viaje a pagar</th><th>Trabajo</th><th>Extra</th><th>Proyectos / observaciones</th></tr></thead>
+        <tbody id="tabla-jornadas"></tbody></table></div>
+      <h2>Horas hombre por proyecto</h2>
+      <div class="scroll"><table class="tabla"><thead><tr><th>Proyecto</th><th>Total</th><th>Por persona</th></tr></thead>
+        <tbody id="tabla-proyectos-horas"></tbody></table></div>
+      <h2>Totales por empleado</h2>
+      <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Días</th><th>Trabajo</th><th>Extra</th><th>Viaje total</th><th>Hs viaje a pagar</th></tr></thead>
+        <tbody id="tabla-empleados-tot"></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="tab-marcas" hidden>
+    <form id="form-buscar-marcas" class="fila">
+      <label>Fecha<input id="m-fecha" type="date" required></label>
+      <label>Empleado<select id="m-empleado" class="sel-empleado" data-todos></select></label>
+      <button class="btn prim" type="submit">Ver marcas</button>
+    </form>
+    <p id="sin-marcas" class="nota" hidden>Sin marcas.</p>
+    <div class="scroll"><table class="tabla"><thead><tr><th>Hora</th><th>Empleado</th><th>Marca</th><th>Ubicación</th><th></th></tr></thead>
+      <tbody id="tabla-marcas"></tbody></table></div>
+    <h2>Agregar una marca olvidada</h2>
+    <p class="nota">Usa la fecha y el empleado de arriba. Queda registrado que fue cargada a mano y por qué.</p>
+    <form id="form-agregar-marca" class="fila">
+      <label>Hora<input id="m-hora" type="time" required></label>
+      <label>Marca<select id="m-tipo">
+        <option value="salida_casa">🏠 Salió de casa</option><option value="llegada_trabajo">📍 Llegó al trabajo</option>
+        <option value="inicio">🔧 Arrancó a trabajar</option><option value="cambio">🔁 Cambió de proyecto</option><option value="fin">✅ Terminó de trabajar</option>
+        <option value="salida_trabajo">🚗 Salió del trabajo</option><option value="llegada_casa">🏠 Llegó a casa</option></select></label>
+      <label>Proyecto (si arrancó o cambió)<select id="m-proyecto"></select></label>
+      <label>Lugar (si llegó)<input id="m-lugar"></label>
+      <label>Motivo<input id="m-motivo" placeholder="Ej. se quedó sin batería" required></label>
+      <button class="btn prim" type="submit">Agregar</button>
+    </form>
+  </section>
+
+  <section id="tab-empleados" hidden>
+    <p class="nota">Los empleados se registran solos desde la app. Acá los activás y aprobás la ubicación de su casa (abrí el mapa para revisarla antes).</p>
+    <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Estado</th><th>Casa</th><th>Rol</th></tr></thead>
+      <tbody id="tabla-empleados"></tbody></table></div>
+  </section>
+
+  <section id="tab-proyectos" hidden>
+    <form id="form-proyecto" class="fila">
+      <label>Proyecto (nº o nombre)<input id="p-nombre" required placeholder="P-2045"></label>
+      <label>Cliente<input id="p-cliente" placeholder="YPF"></label>
+      <button class="btn prim" type="submit">Agregar</button>
+    </form>
+    <div class="scroll"><table class="tabla"><thead><tr><th>Proyecto</th><th>Cliente</th><th></th></tr></thead>
+      <tbody id="tabla-proyectos"></tbody></table></div>
+  </section>
+
+  <section id="tab-config" hidden>
+    <form id="form-config" style="max-width:520px">
+      <h2>Brensolma</h2>
+      <div class="fila"><label>Latitud<input id="c-lat" inputmode="decimal"></label><label>Longitud<input id="c-lng" inputmode="decimal"></label></div>
+      <p><button type="button" class="btn" id="btn-ubic-bsm">📍 Usar mi ubicación actual (estando en Brensolma)</button></p>
+      <label>Radio de Brensolma (m)<input id="c-radioBrensolmaM" type="number"></label>
+      <label>Radio de la casa (m)<input id="c-radioCasaM" type="number"></label>
+      <h2>Horas</h2>
+      <label>Jornada normal (min) — lo que pase es extra<input id="c-jornadaMin" type="number"></label>
+      <label>Viaje incluido en el sueldo por día (min)<input id="c-viajeIncluidoMin" type="number"></label>
+      <label>El excedente de viaje se paga cada (min)<input id="c-bloqueViajeMin" type="number"></label>
+      <label>…como (horas)<input id="c-horasPorBloque" type="number" step="0.25"></label>
+      <label>Bloque incompleto<select id="c-redondeo"><option value="abajo">No cuenta (solo bloques completos)</option><option value="arriba">Cuenta como bloque entero</option></select></label>
+      <button class="btn prim" type="submit">Guardar</button>
+    </form>
+  </section>
+</main>
+<script src="js/config.js"></script>
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

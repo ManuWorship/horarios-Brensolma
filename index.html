@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Horarios Brensolma</title>
+<meta name="theme-color" content="#0b2d5b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icono-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Horarios BSM">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header>
+  <div><strong>Horarios Brensolma</strong><span id="hola"></span></div>
+  <nav>
+    <button id="btn-perfil" class="chico" type="button">Mi perfil</button>
+    <button id="btn-salir" class="chico" type="button" hidden>Salir</button>
+  </nav>
+</header>
+
+<div id="aviso" class="aviso" hidden></div>
+
+<main>
+  <section id="pantalla-login">
+    <h1>Ingresar</h1>
+    <form id="form-login">
+      <label id="campo-nombre" hidden>Nombre y apellido<input id="nombre" autocomplete="name"></label>
+      <label>Mail<input id="email" type="email" autocomplete="email" required></label>
+      <label>Contraseña<input id="pass" type="password" autocomplete="current-password" minlength="6" required></label>
+      <button type="submit" value="login" class="marcar principal">Entrar</button>
+      <button type="submit" value="registro" class="marcar secundario">Crear cuenta</button>
+    </form>
+    <p class="chico"><button id="btn-mostrar-registro" type="button" class="link">Es mi primera vez</button> ·
+      <button id="btn-olvide" type="button" class="link">Me olvidé la contraseña</button></p>
+  </section>
+
+  <section id="pantalla-pendiente" hidden>
+    <h1>Cuenta pendiente</h1>
+    <p>Tu cuenta está creada. Falta que administración la active.</p>
+    <p>Mientras tanto, <b>cuando estés en tu casa</b>, registrá su ubicación:</p>
+    <button class="marcar principal btn-casa" type="button"><span class="emoji">🏠</span>Estoy en casa: registrar ubicación</button>
+    <p class="nota" id="estado-casa-2"></p>
+  </section>
+
+  <section id="pantalla-marcar" hidden>
+    <p id="fecha-hoy" class="fecha"></p>
+    <p id="estado" class="estado"></p>
+    <div id="botones"></div>
+    <div id="resumen" class="resumen" hidden></div>
+    <h2>Hoy</h2>
+    <p id="sin-marcas" class="nota">Sin marcas todavía.</p>
+    <ol id="lista-hoy" class="lista"></ol>
+  </section>
+
+  <section id="pantalla-perfil" hidden>
+    <h1>Mi perfil</h1>
+    <p id="estado-casa" class="nota"></p>
+    <button class="marcar secundario btn-casa" type="button"><span class="emoji">🏠</span>Estoy en casa: registrar ubicación</button>
+    <p class="nota">La ubicación solo se toma en el momento de cada marca. La app no te sigue durante el día.</p>
+    <button id="btn-volver" class="marcar secundario" type="button">Volver</button>
+  </section>
+</main>
+
+<dialog id="dialogo">
+  <form method="dialog">
+    <h2 id="dialogo-titulo"></h2>
+    <div id="dialogo-opciones" class="opciones"></div>
+    <div id="dialogo-libre" hidden>
+      <input id="dialogo-input">
+      <button id="dialogo-ok" type="button" class="marcar principal">Listo</button>
+    </div>
+    <button id="dialogo-cancelar" type="button" class="link">Cancelar</button>
+  </form>
+</dialog>
+
+<script src="js/config.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
