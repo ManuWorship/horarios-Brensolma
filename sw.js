@@ -1,6 +1,6 @@
 // Service worker mínimo: permite instalar la app y abrirla sin conexión.
 // Las marcas igual necesitan internet (la hora la pone el servidor).
-const CACHE = "horarios-v1-2";
+const CACHE = "horarios-v1-3";
 const ARCHIVOS = ["./", "index.html", "estilos.css", "app.js", "config.js", "manifest.webmanifest", "icono.svg"];
 self.addEventListener("install", (e) => e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ARCHIVOS)).then(() => self.skipWaiting())));
 self.addEventListener("activate", (e) => e.waitUntil(
