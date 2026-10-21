@@ -76,9 +76,9 @@
       <label>Marca<select id="m-tipo">
         <option value="salida_casa">🏠 Salió de casa</option><option value="llegada_trabajo">📍 Llegó al trabajo</option>
         <option value="inicio">🔧 Arrancó a trabajar</option><option value="cambio">🔁 Cambió de proyecto</option><option value="fin">✅ Terminó de trabajar</option>
-        <option value="salida_trabajo">🚗 Salió del trabajo</option><option value="llegada_casa">🏠 Llegó a casa</option></select></label>
+        <option value="salida_trabajo">🚗 Salió del trabajo</option><option value="llegada_casa">🏠 Llegó a casa</option><option value="no_voy_casa">🚫 No volvió a casa</option></select></label>
       <label>Proyecto (si arrancó o cambió)<select id="m-proyecto"></select></label>
-      <label>Lugar (si llegó)<input id="m-lugar"></label>
+      <label>Lugar (si llegó o salió)<input id="m-lugar"></label>
       <label>Motivo<input id="m-motivo" placeholder="Ej. se quedó sin batería" required></label>
       <button class="btn prim" type="submit">Agregar</button>
     </form>
@@ -96,7 +96,7 @@
       <label>Cliente<input id="p-cliente" placeholder="YPF"></label>
       <button class="btn prim" type="submit">Agregar</button>
     </form>
-    <div class="scroll"><table class="tabla"><thead><tr><th>Proyecto</th><th>Cliente</th><th></th></tr></thead>
+    <div class="scroll"><table class="tabla"><thead><tr><th>Proyecto</th><th>Cliente</th><th>Dirección</th><th></th></tr></thead>
       <tbody id="tabla-proyectos"></tbody></table></div>
   </section>
 
@@ -131,7 +131,7 @@
     <button id="casa-buscar" type="button" class="btn">Buscar</button>
   </div>
   <div id="casa-resultados"></div>
-  <p class="nota">Abrí "ver en el mapa" y revisá que el punto caiga en la casa. Si queda corrido, pegá las coordenadas exactas.</p>
+  <p class="nota">Abrí "ver en el mapa" y revisá que el punto caiga en el lugar correcto. Si queda corrido, pegá las coordenadas exactas.</p>
   <div class="fila">
     <button id="casa-guardar" type="button" class="btn prim" disabled>Guardar casa</button>
     <button id="casa-cancelar" type="button" class="btn">Cancelar</button>
