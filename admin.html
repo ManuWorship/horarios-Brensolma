@@ -49,13 +49,13 @@
       <p id="sin-datos" class="nota" hidden>No hay marcas en ese período.</p>
       <h2>Jornadas</h2>
       <div class="scroll"><table class="tabla">
-        <thead><tr><th>Fecha</th><th>Empleado</th><th>Salió casa</th><th>Llegó trabajo</th><th>Salió trabajo</th><th>Llegó casa</th><th>Viaje</th><th>Hs viaje a pagar</th><th>Trabajo</th><th>Extra</th><th>Proyectos / observaciones</th></tr></thead>
+        <thead><tr><th>Fecha</th><th>Empleado</th><th>Salió casa</th><th>Llegó trabajo</th><th>Salió trabajo</th><th>Llegó casa</th><th>Viaje</th><th>Hs viaje a pagar</th><th>Trabajo (sin almuerzo)</th><th>Extra</th><th>Proyectos / observaciones</th></tr></thead>
         <tbody id="tabla-jornadas"></tbody></table></div>
       <h2>Horas hombre por proyecto</h2>
       <div class="scroll"><table class="tabla"><thead><tr><th>Proyecto</th><th>Total</th><th>Por persona</th></tr></thead>
         <tbody id="tabla-proyectos-horas"></tbody></table></div>
       <h2>Totales por empleado</h2>
-      <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Días</th><th>Trabajo</th><th>Extra</th><th>Viaje total</th><th>Hs viaje a pagar</th></tr></thead>
+      <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Días</th><th>Trabajo (sin almuerzo)</th><th>Extra</th><th>Viaje total</th><th>Hs viaje a pagar</th></tr></thead>
         <tbody id="tabla-empleados-tot"></tbody></table></div>
     </div>
   </section>
@@ -114,7 +114,8 @@
       <label>Radio de Brensolma (m)<input id="c-radioBrensolmaM" type="number"></label>
       <label>Radio de la casa (m)<input id="c-radioCasaM" type="number"></label>
       <h2>Horas</h2>
-      <label>Jornada normal (min) — lo que pase es extra<input id="c-jornadaMin" type="number"></label>
+      <label>Jornada normal con almuerzo incluido (min) — lo que pase es extra<input id="c-jornadaMin" type="number"></label>
+      <label>Almuerzo que se descuenta de las horas trabajadas (min)<input id="c-almuerzoMin" type="number"></label>
       <label>Viaje incluido en el sueldo por día (min)<input id="c-viajeIncluidoMin" type="number"></label>
       <label>El excedente de viaje se paga cada (min)<input id="c-bloqueViajeMin" type="number"></label>
       <label>…como (horas)<input id="c-horasPorBloque" type="number" step="0.25"></label>
