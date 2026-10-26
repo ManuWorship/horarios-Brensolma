@@ -96,6 +96,11 @@
       <label>Cliente<input id="p-cliente" placeholder="YPF"></label>
       <button class="btn prim" type="submit">Agregar</button>
     </form>
+    <p class="nota">¿Muchos de una vez? Subí un Excel con las columnas <b>Proyecto</b>, <b>Cliente</b> y, si querés, <b>Dirección</b> o <b>Coordenadas</b>.
+      Los que ya existen se actualizan.
+      <button type="button" class="btn peq" id="btn-importar">📥 Importar Excel</button>
+      <button type="button" class="btn peq" id="btn-modelo">Bajar modelo</button>
+      <input type="file" id="archivo-proyectos" accept=".xlsx,.xls,.csv" hidden></p>
     <div class="scroll"><table class="tabla"><thead><tr><th>Proyecto</th><th>Cliente</th><th>Dirección</th><th></th></tr></thead>
       <tbody id="tabla-proyectos"></tbody></table></div>
   </section>
