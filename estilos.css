@@ -60,3 +60,4 @@ main.ancho{max-width:1200px}
 .selector-tema button{flex:1;padding:10px;border-radius:10px;border:1px solid var(--borde);background:var(--carta);color:var(--texto);font-size:14px}
 .selector-tema button[aria-pressed=true]{background:var(--verde);border-color:var(--verde);color:#fff;font-weight:600}
 .cargando{text-align:center;padding-top:12vh}
+#dialogo-buscar{margin:0 0 10px}

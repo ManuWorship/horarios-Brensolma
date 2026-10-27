@@ -78,7 +78,9 @@
 <dialog id="dialogo">
   <form method="dialog">
     <h2 id="dialogo-titulo"></h2>
+    <input id="dialogo-buscar" type="search" placeholder="🔎 Buscar por nombre o número…" autocomplete="off" hidden>
     <div id="dialogo-opciones" class="opciones"></div>
+    <p id="dialogo-vacio" class="nota" hidden>No hay coincidencias.</p>
     <div id="dialogo-libre" hidden>
       <input id="dialogo-input">
       <button id="dialogo-ok" type="button" class="marcar principal">Listo</button>
