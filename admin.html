@@ -21,6 +21,7 @@
     <button class="btn" data-tab="reporte">📊 Reporte</button>
     <button class="btn" data-tab="marcas">✏️ Correcciones</button>
     <button class="btn" data-tab="empleados">👷 Empleados<span id="badge-emp"></span></button>
+    <button class="btn" data-tab="viaticos">🧾 Viáticos</button>
     <button class="btn" data-tab="proyectos">📁 Proyectos</button>
     <button class="btn" data-tab="config">⚙️ Configuración</button>
   </div>
@@ -86,8 +87,20 @@
 
   <section id="tab-empleados" hidden>
     <p class="nota">Los empleados se registran solos desde la app. Acá los activás y les cargás la dirección de su casa (solo administración puede cargarla o cambiarla).</p>
-    <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Estado</th><th>Casa</th><th>Rol</th></tr></thead>
+    <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Estado</th><th>Casa</th><th>DNI (planilla)</th><th>Paga mesas a cuenta</th><th>Rol</th></tr></thead>
       <tbody id="tabla-empleados"></tbody></table></div>
+  </section>
+
+  <section id="tab-viaticos" hidden>
+    <form id="form-viaticos" class="fila">
+      <label>Semana (cualquier día)<input id="v-fecha" type="date" required></label>
+      <button class="btn prim" type="submit">Ver</button>
+    </form>
+    <div class="scroll"><table class="tabla"><thead><tr><th>Empleado</th><th>Almuerzos</th><th>Otros</th><th>Total</th><th>Comprobantes</th><th></th></tr></thead>
+      <tbody id="tabla-viaticos"></tbody></table></div>
+    <h2>Detalle</h2>
+    <div class="scroll"><table class="tabla"><thead><tr><th>Día</th><th>Empleado</th><th>Tipo</th><th>Planilla</th><th>Ticket</th><th>Proyecto</th><th>Descripción</th><th>Foto</th></tr></thead>
+      <tbody id="tabla-viaticos-det"></tbody></table></div>
   </section>
 
   <section id="tab-proyectos" hidden>

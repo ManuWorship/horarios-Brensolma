@@ -8,3 +8,6 @@ window.FIREBASE_CONFIG = {
   messagingSenderId: "214734782223",
   appId: "1:214734782223:web:f818c5054a3d1a01ce487a",
 };
+
+// Servidor de viáticos (lee las fotos y arma la planilla). Se completa cuando esté creado en Render.
+window.VIATICOS_API = "https://viaticos-brensolma.onrender.com";

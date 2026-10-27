@@ -61,6 +61,25 @@
     <ol id="lista-hoy" class="lista"></ol>
   </section>
 
+  <section id="pantalla-viaticos" hidden>
+    <div class="v-cabecera">
+      <button id="v-anterior" type="button" class="chico" aria-label="Semana anterior">◀</button>
+      <h2 id="v-semana"></h2>
+      <button id="v-siguiente" type="button" class="chico" aria-label="Semana siguiente">▶</button>
+    </div>
+    <label class="marcar principal v-boton"><span class="emoji">📷</span>Sacar foto del comprobante
+      <input id="v-foto" type="file" accept="image/*" capture="environment" hidden></label>
+    <div class="v-fila">
+      <label class="marcar secundario v-boton"><span class="emoji">🖼️</span>De la galería
+        <input id="v-galeria" type="file" accept="image/*" hidden></label>
+      <button id="v-sin-foto" type="button" class="marcar secundario"><span class="emoji">✍️</span>Sin foto</button>
+    </div>
+    <ol id="v-lista" class="lista v-lista"></ol>
+    <p id="v-total" class="v-total"></p>
+    <button id="v-planilla" type="button" class="marcar secundario"><span class="emoji">📊</span>Descargar planilla de la semana</button>
+    <p class="nota">Las fotos y la planilla se guardan solas en Dropbox. Las facturas en papel se siguen entregando como dice la política.</p>
+  </section>
+
   <section id="pantalla-perfil" hidden>
     <h1>Mi perfil</h1>
     <p id="estado-casa" class="nota"></p>
@@ -74,6 +93,32 @@
     <button id="btn-volver" class="marcar secundario" type="button">Volver</button>
   </section>
 </main>
+
+<nav id="pestanas" class="pestanas" hidden>
+  <button type="button" data-ir="pantalla-marcar"><span>⏱️</span>Horarios</button>
+  <button type="button" data-ir="pantalla-viaticos"><span>🧾</span>Viáticos</button>
+</nav>
+
+<dialog id="dlg-preg">
+  <form method="dialog" onsubmit="return false">
+    <h2 id="preg-titulo"></h2>
+    <p id="preg-nota" class="nota" hidden></p>
+    <input id="preg-input" autocomplete="off">
+    <p id="preg-error" class="alerta" hidden></p>
+    <button id="preg-ok" type="button" class="marcar principal">Siguiente</button>
+    <button id="preg-cancelar" type="button" class="link">Cancelar</button>
+  </form>
+</dialog>
+
+<dialog id="dlg-conf">
+  <form method="dialog" onsubmit="return false">
+    <h2>Revisá antes de guardar</h2>
+    <div id="conf-lineas"></div>
+    <div id="conf-avisos"></div>
+    <button id="conf-ok" type="button" class="marcar principal">✅ Guardar</button>
+    <button id="conf-cancelar" type="button" class="link">Cancelar</button>
+  </form>
+</dialog>
 
 <dialog id="dialogo">
   <form method="dialog">
