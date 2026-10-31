@@ -10,4 +10,4 @@ window.FIREBASE_CONFIG = {
 };
 
 // Servidor de viáticos (lee las fotos y arma la planilla).
-window.VIATICOS_API = "https://viaticos-brensolma-hrsn.onrender.com";
+window.VIATICOS_API = "https://viaticos-api-brensolma.onrender.com";
